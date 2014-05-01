@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+		<link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <form action="/" id="searchForm">
+            <select id="category">
+				<option value="VG95cyAmIEdhbWVz">Toys & Games</option>
+				<option value="S2l0Y2hlbiAmIERpbmluZw%3D%3D">Kitchen & Dining</option>
+				<option value="SG9tZSAmIEtpdGNoZW4%3D">Home & Kitchen</option>
+				<option value="T2ZmaWNlIFByb2R1Y3Rz">Office Products</option>
+				<option value="SGVhbHRoICYgUGVyc29uYWwgQ2FyZQ%3D%3D">Health & Personal</option>
+				<option value="U3BvcnRzICYgT3V0ZG9vcnM%3D">Sports & Outdoors</option>
+				<option value="QmVhdXR5">Beauty</option>
+				<option value="R3JvY2VyeSAmIEdvdXJtZXQgRm9vZA%3D%3D">Grocery</option>
+			</select>
+            <input type="number" id="rank"/>
+            <input type="submit" id="submit" value="Search" />
+        </form>
+        <!-- the result of the search will be rendered inside this div -->
+        <div id="result">
+			<div class="wrapper">
+			<div class="left">Sales Rank</div>
+			<div class="right">30 Day AVG</div>
+			</div>
+		</div>
+		<div class="wrapper"><div id="customl" class="left"></div><div id="custom" class="right"></div></div>
+		<div class="wrapper"><div class="left">100</div><div id="100" class="right"></div></div>
+		<div class="wrapper"><div class="left">1000</div><div id="1000" class="right"></div></div>
+		<div class="wrapper"><div class="left">5000</div><div id="5000" class="right"></div></div>
+		<div class="wrapper"><div class="left">10000</div><div id="10000" class="right"></div></div>
+		<div class="wrapper"><div class="left">25000</div><div id="25000" class="right"></div></div>
+		<div class="wrapper"><div class="left">50000</div><div id="50000" class="right"></div></div>
+		<div class="wrapper"><div class="left">100000</div><div id="100000" class="right"></div></div>
+		<div class="wrapper"><div class="left">250000</div><div id="250000" class="right"></div></div>
+		<div class="wrapper"><div class="left">500000</div><div id="500000" class="right"></div></div>
+		<div class="wrapper"><div class="left">1000000</div><div id="1000000" class="right"></div></div></div>
+		
+		
+    <script>
+		/* attach a submit handler to the form */
+		$("#searchForm").submit(function(event) {
+			/* stop form from submitting normally */
+			event.preventDefault();
+			var category = $("#category").val();
+			var rank = $("#rank").val();
+			var ranks = [rank, 100, 1000, 5000, 10000, 25000, 50000, 100000, 250000, 500000, 1000000];
+			ranks.forEach(function(entry) {
+			if(entry == rank) {
+			  $("#customl").text(rank);
+		    }
+			var fbaurl = "http://www.bouncingdigital.com/fbatool/fbatool.php?category=" + category + "&rank=" + entry;
+			$.ajax({
+				url: fbaurl,
+				datatype: "jsonp",
+				}).done(function( data ) {
+					var fbadata = $.parseJSON(data)
+					if(entry == rank) {
+			          $("#custom").text(fbadata.sales_per_day_30day_avg);
+		            }
+					$("#" + entry).text(fbadata.sales_per_day_30day_avg);
+				});           
+            });
+            });			
+        </script>
+    </body>
+</html>
