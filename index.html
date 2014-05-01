@@ -54,6 +54,7 @@
 			var fbaurl = "http://www.bouncingdigital.com/fbatool/fbatool.php?category=" + category + "&rank=" + entry;
 			$.ajax({
 				url: fbaurl,
+                                withCredentials: false,
 				datatype: "jsonp",
 				}).done(function( data ) {
 					var fbadata = $.parseJSON(data)
