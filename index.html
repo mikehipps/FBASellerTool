@@ -27,16 +27,16 @@
 			</div>
 		</div>
 		<div class="wrapper"><div id="customl" class="left"></div><div id="custom" class="right"></div></div>
-		<div class="wrapper"><div class="left">100</div><div id="100" class="right"></div></div>
-		<div class="wrapper"><div class="left">1000</div><div id="1000" class="right"></div></div>
-		<div class="wrapper"><div class="left">5000</div><div id="5000" class="right"></div></div>
-		<div class="wrapper"><div class="left">10000</div><div id="10000" class="right"></div></div>
-		<div class="wrapper"><div class="left">25000</div><div id="25000" class="right"></div></div>
-		<div class="wrapper"><div class="left">50000</div><div id="50000" class="right"></div></div>
-		<div class="wrapper"><div class="left">100000</div><div id="100000" class="right"></div></div>
-		<div class="wrapper"><div class="left">250000</div><div id="250000" class="right"></div></div>
-		<div class="wrapper"><div class="left">500000</div><div id="500000" class="right"></div></div>
-		<div class="wrapper"><div class="left">1000000</div><div id="1000000" class="right"></div></div></div>
+		<div class="wrapper"><div class="left">Sales Rank - 100</div><div id="100" class="right"></div></div>
+		<div class="wrapper"><div class="left">Sales Rank - 1000</div><div id="1000" class="right"></div></div>
+		<div class="wrapper"><div class="left">Sales Rank - 5000</div><div id="5000" class="right"></div></div>
+		<div class="wrapper"><div class="left">Sales Rank - 10000</div><div id="10000" class="right"></div></div>
+		<div class="wrapper"><div class="left">Sales Rank - 25000</div><div id="25000" class="right"></div></div>
+		<div class="wrapper"><div class="left">Sales Rank - 50000</div><div id="50000" class="right"></div></div>
+		<div class="wrapper"><div class="left">Sales Rank - 100000</div><div id="100000" class="right"></div></div>
+		<div class="wrapper"><div class="left">Sales Rank - 250000</div><div id="250000" class="right"></div></div>
+		<div class="wrapper"><div class="left">Sales Rank - 500000</div><div id="500000" class="right"></div></div>
+		<div class="wrapper"><div class="left">Sales Rank - 1000000</div><div id="1000000" class="right"></div></div></div>
 		
 		
     <script>
@@ -58,9 +58,9 @@
 				}).done(function( data ) {
 					var fbadata = $.parseJSON(data)
 					if(entry == rank) {
-			          $("#custom").text(fbadata.sales_per_day_30day_avg);
+			          $("#custom").text("Units -" + fbadata.sales_per_day_30day_avg);
 		            }
-					$("#" + entry).text(fbadata.sales_per_day_30day_avg);
+					$("#" + entry).text("Units -" + fbadata.sales_per_day_30day_avg);
 				});           
             });
             });			
